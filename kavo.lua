@@ -34,9 +34,9 @@ while screenGuis.Parent do
 		end
 		for _, v in pairs(aggressors:GetDescendants()) do
 			if v:IsA("MeshPart") then
-				part.CFrame = v.CFrame * CFrame.new(3, v.Size.Y / 3, -v.Size.Z / 3)
-				part.CFrame = CFrame.new(part.Position)
 				character.Humanoid:MoveTo(v.Position)
+				task.wait(10)
+				part.CFrame = v.CFrame * CFrame.new(-v.Size.Z / 3, v.Size.Y / 3, -v.Size.Z / 3)
 				HumanoidRootPart.CFrame = part.CFrame * CFrame.new(0, 3, 0)
 				break
 			end
