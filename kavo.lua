@@ -18,7 +18,6 @@ button.MouseButton1Click:Connect(function()
 	vote = not vote
 	button.Text = vote and "Auto TP Enemy On" or "Auto TP Enemy Off"
 end)
-local num = 0
 while screenGuis.Parent do
 	task.wait()
 	local aggressors = workspace:FindFirstChild("Animal_Live") and workspace.Animal_Live:FindFirstChild("Aggressors")
@@ -33,10 +32,11 @@ while screenGuis.Parent do
 			part.Transparency = 1
 			part.Name = "Part"
 		end
-		num += 1
 		for _, v in pairs(aggressors:GetDescendants()) do
 			if v:IsA("MeshPart") then
-				part.CFrame = v.CFrame * CFrame.Angles(0, math.rad(num), 0) * CFrame.new(0, v.Size.Y / 2, v.Size.Z / 2)
+				part.CFrame = v.CFrame
+				part.CFrame = CFrame.Angles(0, 0, 0) * CFrame.new(3, v.Size.Y / 3, -v.Size.Z / 3)
+				character.Humanoid:MoveTo(v.Position)
 				HumanoidRootPart.CFrame = part.CFrame * CFrame.new(0, 3, 0)
 				break
 			end
