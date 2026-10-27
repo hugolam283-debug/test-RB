@@ -34,8 +34,8 @@ while screenGuis.Parent do
 		end
 		for _, v in pairs(aggressors:GetDescendants()) do
 			if v:IsA("MeshPart") then
-				part.CFrame = v.CFrame
-				part.CFrame = CFrame.Angles(0, 0, 0) * CFrame.new(3, v.Size.Y / 3, -v.Size.Z / 3)
+				part.CFrame = v.CFrame * CFrame.new(3, v.Size.Y / 3, -v.Size.Z / 3)
+				part.CFrame = CFrame.Angles(0, 0, 0)
 				character.Humanoid:MoveTo(v.Position)
 				HumanoidRootPart.CFrame = part.CFrame * CFrame.new(0, 3, 0)
 				break
